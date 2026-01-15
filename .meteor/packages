@@ -31,3 +31,4 @@ accounts-github@1.5.1
 service-configuration@1.3.5
 ddp-rate-limiter@1.2.2
 rspack@1.0.0-beta340.12
+roles
