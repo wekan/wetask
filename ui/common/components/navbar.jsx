@@ -107,6 +107,7 @@ export function Navbar() {
             variant="ghost"
             _hover={{ bg: 'rgba(255, 255, 255, 0.1)' }}
             onClick={() => navigate(routes.tasks)}
+            leftIcon={<FaHome />}
           >
             All Boards
           </Button>
