@@ -207,5 +207,5 @@ For our UI components, we have chosen Chakra UI because of its productivity that
 
 We have included Dark and Light modes. It can be seen those configs in `ui/common/components/ui-provider.jsx`.
 
-You can see Chakra-UI's full component list on [their website](https://chakra-ui.com/getting-started).
+You can see Chakra-UI's full component list on [their website](https://chakra-ui.com/docs/components/concepts/overview).
 
