@@ -18,6 +18,7 @@ export function Layout({ loggedOnly = true, children }) {
 
   const showAdminNavigation =
     location.pathname.startsWith('/setting') ||
+    location.pathname.startsWith('/people/') ||
     [
       '/people',
       '/roles',
@@ -29,6 +30,7 @@ export function Layout({ loggedOnly = true, children }) {
 
   const isSettingsPage =
     location.pathname.startsWith('/setting') ||
+    location.pathname.startsWith('/people/') ||
     [
       '/people',
       '/roles',

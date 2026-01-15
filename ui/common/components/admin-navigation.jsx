@@ -28,6 +28,12 @@ export function AdminNavigation() {
         location.pathname.startsWith('/setting/')
       );
     }
+    if (path === '/people') {
+      return (
+        location.pathname === '/people' ||
+        location.pathname.startsWith('/people/')
+      );
+    }
     return location.pathname === path;
   };
 

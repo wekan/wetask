@@ -35,6 +35,7 @@ const NotFoundPage = React.lazy(
 );
 const TasksPage = React.lazy(() => import('./pages/tasks/tasks-page'));
 const SettingPage = React.lazy(() => import('./pages/setting/setting-page'));
+const PeoplePage = React.lazy(() => import('./pages/people/people-page'));
 import { RolesPage } from './pages/roles/roles-page';
 
 export function Routes() {
@@ -76,10 +77,42 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <PeoplePage />
             </Layout>
           }
           path={routes.people}
+        />
+        <Route
+          element={
+            <Layout>
+              <PeoplePage />
+            </Layout>
+          }
+          path="/people/organizations"
+        />
+        <Route
+          element={
+            <Layout>
+              <PeoplePage />
+            </Layout>
+          }
+          path="/people/teams"
+        />
+        <Route
+          element={
+            <Layout>
+              <PeoplePage />
+            </Layout>
+          }
+          path="/people/people"
+        />
+        <Route
+          element={
+            <Layout>
+              <PeoplePage />
+            </Layout>
+          }
+          path="/people/locked-users"
         />
         <Route
           element={

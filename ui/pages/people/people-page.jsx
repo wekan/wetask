@@ -13,61 +13,40 @@ import {
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FaDatabase, FaShieldAlt } from '@react-icons/all-files';
-import { FaBullhorn } from '@react-icons/all-files/fa/FaBullhorn';
-import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope';
-import { FaEye } from '@react-icons/all-files/fa/FaEye';
-import { FaGlobe } from '@react-icons/all-files/fa/FaGlobe';
-import { FaObjectGroup } from '@react-icons/all-files/fa/FaObjectGroup';
-import { FaSignInAlt } from '@react-icons/all-files/fa/FaSignInAlt';
-import { FaUniversalAccess } from '@react-icons/all-files/fa/FaUniversalAccess';
+import { FaLock } from '@react-icons/all-files/fa/FaLock';
+import { FaSitemap } from '@react-icons/all-files/fa/FaSitemap';
+import { FaUser } from '@react-icons/all-files/fa/FaUser';
 import { FaUsers } from '@react-icons/all-files/fa/FaUsers';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes';
 
-export default function SettingPage() {
+export default function PeoplePage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const settingsMenuItems = [
-    { label: 'Registration', path: '/setting/registration', icon: FaSignInAlt },
-    { label: 'Email', path: '/setting/email', icon: FaEnvelope },
-    { label: 'Accounts', path: '/setting/accounts', icon: FaUsers },
-    {
-      label: 'Boards visibility',
-      path: '/setting/boards-visibility',
-      icon: FaEye,
-    },
-    { label: 'Announcement', path: '/setting/announcement', icon: FaBullhorn },
-    {
-      label: 'Accessibility',
-      path: '/setting/accessibility',
-      icon: FaUniversalAccess,
-    },
-    { label: 'Layout', path: '/setting/layout', icon: FaObjectGroup },
-    {
-      label: 'Global Webhooks',
-      path: '/setting/global-webhooks',
-      icon: FaGlobe,
-    },
+  const peopleMenuItems = [
+    { label: 'Organizations', path: '/people/organizations', icon: FaSitemap },
+    { label: 'Teams', path: '/people/teams', icon: FaUsers },
+    { label: 'People', path: '/people/people', icon: FaUser },
+    { label: 'Locked Users', path: '/people/locked-users', icon: FaLock },
   ];
 
   const isActiveMenuItem = (path) => location.pathname === path;
 
   const renderContent = () => {
-    // Placeholder content for other settings pages (not /setting)
-    const currentMenuItem = settingsMenuItems.find(
+    // Placeholder content for other people pages
+    const currentMenuItem = peopleMenuItems.find(
       (item) => item.path === location.pathname
     );
     return (
       <Box p={8}>
         <Heading size="lg" mb={4}>
-          {currentMenuItem?.label || 'Settings'}
+          {currentMenuItem?.label || 'People Management'}
         </Heading>
         <Text color="gray.600">
-          Content for {currentMenuItem?.label || 'this settings page'} will be
-          implemented here.
+          Content for {currentMenuItem?.label || 'this people management page'}{' '}
+          will be implemented here.
         </Text>
       </Box>
     );
@@ -75,7 +54,7 @@ export default function SettingPage() {
 
   return (
     <Box w="100%">
-      {/* Settings Content */}
+      {/* People Content */}
       <Grid
         templateColumns="minmax(180px, 250px) 1fr"
         gap={0}
@@ -85,7 +64,7 @@ export default function SettingPage() {
         <GridItem>
           <Box bg="white" h="100%" borderRadius="md" shadow="sm">
             <List spacing={0}>
-              {settingsMenuItems.map((item) => {
+              {peopleMenuItems.map((item) => {
                 const IconComponent = item.icon;
                 return (
                   <ListItem key={item.path}>
@@ -116,17 +95,17 @@ export default function SettingPage() {
         <GridItem>
           <Box bg="#dedede" h="100%" borderRadius="md" shadow="sm">
             <Box p={8}>
-              {/* Show placeholder for /setting route */}
-              {location.pathname !== '/setting' ? (
+              {/* Show placeholder for /people route */}
+              {location.pathname !== '/people' ? (
                 renderContent()
               ) : (
                 <Box p={8}>
                   <Heading size="lg" mb={4}>
-                    Settings Overview
+                    People Management Overview
                   </Heading>
                   <Text color="gray.600">
-                    Select a setting from the menu to configure your
-                    preferences.
+                    Select a category from the menu to manage organizations,
+                    teams, and people.
                   </Text>
                 </Box>
               )}
