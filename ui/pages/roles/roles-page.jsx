@@ -1,35 +1,35 @@
 import {
+  Badge,
   Box,
   Button,
   Container,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue,
-  VStack,
-  HStack,
-  Badge,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  IconButton,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
   FormControl,
   FormLabel,
+  HStack,
+  Heading,
+  IconButton,
   Input,
-  Select,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Select,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  VStack,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { FaEdit, FaTrash, FaPlus } from '@react-icons/all-files';
+import { FaEdit, FaPlus, FaTrash } from '@react-icons/all-files';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,7 +58,7 @@ const mockRoles = [
   },
 ];
 
-export default function RolesPage() {
+export function RolesPage() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [editingRole, setEditingRole] = useState(null);
@@ -126,7 +126,10 @@ export default function RolesPage() {
               >
                 Roles Management
               </Heading>
-              <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.400')}>
+              <Text
+                fontSize="lg"
+                color={useColorModeValue('gray.600', 'gray.400')}
+              >
                 Manage user roles and permissions
               </Text>
             </Box>
@@ -171,9 +174,9 @@ export default function RolesPage() {
                     <Td>{role.description}</Td>
                     <Td>
                       <HStack spacing={1}>
-                        {role.permissions.map((permission, index) => (
+                        {role.permissions.map((permission, _index) => (
                           <Badge
-                            key={index}
+                            key={permission}
                             colorScheme={getPermissionBadgeColor(permission)}
                             fontSize="xs"
                           >

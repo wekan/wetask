@@ -4,7 +4,6 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { routes } from '../../routes';
 import { AdminNavigation } from './admin-navigation';
-import { Footer } from './footer';
 import { Navbar } from './navbar';
 
 import './excalidraw-global.css';
@@ -17,7 +16,16 @@ export function Layout({ loggedOnly = true, children }) {
     return <Navigate to={routes.root} />;
   }
 
-  const showAdminNavigation = location.pathname === routes.setting;
+  const showAdminNavigation =
+    location.pathname.startsWith('/setting') ||
+    [
+      '/people',
+      '/roles',
+      '/admin-reports',
+      '/attachments',
+      '/translation',
+      '/information',
+    ].includes(location.pathname);
 
   return (
     <>
@@ -26,7 +34,6 @@ export function Layout({ loggedOnly = true, children }) {
       <Box maxW="6xl" mx="auto">
         {children}
       </Box>
-      <Footer />
     </>
   );
 }

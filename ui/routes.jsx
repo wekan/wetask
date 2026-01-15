@@ -35,7 +35,7 @@ const NotFoundPage = React.lazy(
 );
 const TasksPage = React.lazy(() => import('./pages/tasks/tasks-page'));
 const SettingPage = React.lazy(() => import('./pages/setting/setting-page'));
-import RolesPage from './pages/roles/roles-page';
+import { RolesPage } from './pages/roles/roles-page';
 
 export function Routes() {
   return (

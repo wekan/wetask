@@ -1,15 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import { FaCog } from '@react-icons/all-files/fa/FaCog';
-import { FaUsers } from '@react-icons/all-files/fa/FaUsers';
-import { FaList } from '@react-icons/all-files/fa/FaList';
-import { FaPaperclip } from '@react-icons/all-files/fa/FaPaperclip';
 import { FaFont } from '@react-icons/all-files/fa/FaFont';
 import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle';
+import { FaList } from '@react-icons/all-files/fa/FaList';
+import { FaPaperclip } from '@react-icons/all-files/fa/FaPaperclip';
+import { FaUsers } from '@react-icons/all-files/fa/FaUsers';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -26,7 +21,15 @@ export function AdminNavigation() {
     { label: 'Version', path: '/information', icon: FaInfoCircle },
   ];
 
-  const isActiveTab = (path) => location.pathname === path;
+  const isActiveTab = (path) => {
+    if (path === '/setting') {
+      return (
+        location.pathname === '/setting' ||
+        location.pathname.startsWith('/setting/')
+      );
+    }
+    return location.pathname === path;
+  };
 
   return (
     <Box bg="#2980b9" color="white">
@@ -42,7 +45,11 @@ export function AdminNavigation() {
                 key={tab.path}
                 variant="ghost"
                 color="white"
-                bg={isActiveTab(tab.path) ? 'rgba(255, 255, 255, 0.2)' : 'transparent'}
+                bg={
+                  isActiveTab(tab.path)
+                    ? 'rgba(255, 255, 255, 0.2)'
+                    : 'transparent'
+                }
                 _hover={{ bg: 'rgba(255, 255, 255, 0.1)' }}
                 size="sm"
                 onClick={() => navigate(tab.path)}
