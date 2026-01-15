@@ -27,13 +27,28 @@ export function Layout({ loggedOnly = true, children }) {
       '/information',
     ].includes(location.pathname);
 
+  const isSettingsPage =
+    location.pathname.startsWith('/setting') ||
+    [
+      '/people',
+      '/roles',
+      '/admin-reports',
+      '/attachments',
+      '/translation',
+      '/information',
+    ].includes(location.pathname);
+
   return (
     <>
       <Navbar />
       {showAdminNavigation && <AdminNavigation />}
-      <Box maxW="6xl" mx="auto">
-        {children}
-      </Box>
+      {isSettingsPage ? (
+        <>{children}</>
+      ) : (
+        <Box maxW="6xl" mx="auto">
+          {children}
+        </Box>
+      )}
     </>
   );
 }

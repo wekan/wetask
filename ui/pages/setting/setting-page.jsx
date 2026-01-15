@@ -75,10 +75,10 @@ export default function SettingPage() {
   return (
     <Box w="100%">
       {/* Settings Content */}
-      <Grid templateColumns="300px 1fr" gap={0} minH="600px">
+      <Grid templateColumns="300px 1fr" gap={0} h="calc(100vh - 110px)">
         {/* Left Sidebar Menu */}
         <GridItem>
-          <Box bg="white" minH="100%" borderRadius="md" shadow="sm">
+          <Box bg="white" h="100%" borderRadius="md" shadow="sm">
             <List spacing={0}>
               {settingsMenuItems.map((item) => {
                 const IconComponent = item.icon;
@@ -109,7 +109,7 @@ export default function SettingPage() {
 
         {/* Right Content Area */}
         <GridItem>
-          <Box bg="#dedede" minH="100%" borderRadius="md" shadow="sm">
+          <Box bg="#dedede" h="100%" borderRadius="md" shadow="sm">
             <Box p={8}>
               {/* Show placeholder for /setting route */}
               {location.pathname !== '/setting' ? (
