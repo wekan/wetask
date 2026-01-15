@@ -13,14 +13,26 @@ import {
   CardBody,
   CardHeader,
   Icon,
+  Flex,
+  List,
+  ListItem,
+  ListIcon,
 } from '@chakra-ui/react';
 import { FaUsers, FaCog, FaDatabase, FaShieldAlt } from '@react-icons/all-files';
+import { FaSignInAlt } from '@react-icons/all-files/fa/FaSignInAlt';
+import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope';
+import { FaEye } from '@react-icons/all-files/fa/FaEye';
+import { FaBullhorn } from '@react-icons/all-files/fa/FaBullhorn';
+import { FaUniversalAccess } from '@react-icons/all-files/fa/FaUniversalAccess';
+import { FaObjectGroup } from '@react-icons/all-files/fa/FaObjectGroup';
+import { FaGlobe } from '@react-icons/all-files/fa/FaGlobe';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { routes } from '../../routes';
 
 export default function SettingPage() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const adminSections = [
     {
@@ -56,9 +68,23 @@ export default function SettingPage() {
     },
   ];
 
-  return (
-    <Container maxW="6xl" py={8}>
-      <Stack spacing={8}>
+  const settingsMenuItems = [
+    { label: 'Registration', path: '/setting/registration', icon: FaSignInAlt },
+    { label: 'Email', path: '/setting/email', icon: FaEnvelope },
+    { label: 'Accounts', path: '/setting/accounts', icon: FaUsers },
+    { label: 'Boards visibility', path: '/setting/boards-visibility', icon: FaEye },
+    { label: 'Announcement', path: '/setting/announcement', icon: FaBullhorn },
+    { label: 'Accessibility', path: '/setting/accessibility', icon: FaUniversalAccess },
+    { label: 'Layout', path: '/setting/layout', icon: FaObjectGroup },
+    { label: 'Global Webhooks', path: '/setting/global-webhooks', icon: FaGlobe },
+  ];
+
+  const isActiveMenuItem = (path) => location.pathname === path;
+
+  const renderContent = () => {
+    // Default content for /setting
+    if (location.pathname === '/setting') {
+      return (
         <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap={6}>
           {adminSections.map((section, index) => (
             <GridItem key={index}>
@@ -108,17 +134,74 @@ export default function SettingPage() {
             </GridItem>
           ))}
         </Grid>
+      );
+    }
 
-        <Box textAlign="center" pt={8}>
-          <Button
-            colorScheme="blue"
-            variant="outline"
-            onClick={() => navigate(routes.tasks)}
-          >
-            Back to Tasks
-          </Button>
-        </Box>
-      </Stack>
+    // Placeholder content for other settings pages
+    const currentMenuItem = settingsMenuItems.find(item => item.path === location.pathname);
+    return (
+      <Box p={8}>
+        <Heading size="lg" mb={4}>
+          {currentMenuItem?.label || 'Settings'}
+        </Heading>
+        <Text color="gray.600">
+          Content for {currentMenuItem?.label || 'this settings page'} will be implemented here.
+        </Text>
+      </Box>
+    );
+  };
+
+  return (
+    <Container maxW="7xl" py={8}>
+      <Grid templateColumns="300px 1fr" gap={0} minH="600px">
+        {/* Left Sidebar Menu */}
+        <GridItem>
+          <Box bg="white" minH="100%" borderRadius="md" shadow="sm">
+            <List spacing={0}>
+              {settingsMenuItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <ListItem key={item.path}>
+                    <Flex
+                      p={4}
+                      cursor="pointer"
+                      bg={isActiveMenuItem(item.path) ? '#dedede' : 'transparent'}
+                      _hover={{ bg: '#f0f0f0' }}
+                      onClick={() => navigate(item.path)}
+                      align="center"
+                      gap={3}
+                    >
+                      <Icon as={IconComponent} color="#dedede" boxSize={4} />
+                      <Text color="#dedede" fontSize="sm" fontWeight="medium">
+                        {item.label}
+                      </Text>
+                    </Flex>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Box>
+        </GridItem>
+
+        {/* Right Content Area */}
+        <GridItem>
+          <Box bg="#dedede" minH="100%" borderRadius="md" shadow="sm">
+            <Box p={8}>
+              {renderContent()}
+            </Box>
+          </Box>
+        </GridItem>
+      </Grid>
+
+      <Box textAlign="center" pt={8}>
+        <Button
+          colorScheme="blue"
+          variant="outline"
+          onClick={() => navigate(routes.tasks)}
+        >
+          Back to Tasks
+        </Button>
+      </Box>
     </Container>
   );
 }

@@ -13,6 +13,20 @@ export const routes = {
   attachments: '/attachments',
   translation: '/translation',
   information: '/information',
+  registration: '/setting/registration',
+  email: '/setting/email',
+  accounts: '/setting/accounts',
+  boardsVisibility: '/setting/boards-visibility',
+  announcement: '/setting/announcement',
+  accessibility: '/setting/accessibility',
+  layout: '/setting/layout',
+  globalWebhooks: '/setting/global-webhooks',
+  myCards: '/my-cards',
+  dueCards: '/due-cards',
+  globalSearch: '/global-search',
+  public: '/public',
+  boardArchive: '/board-archive',
+  templates: '/templates',
 };
 
 const SignInPage = React.lazy(() => import('./pages/auth/sign-in-page'));
@@ -98,6 +112,134 @@ export function Routes() {
             </Layout>
           }
           path={routes.information}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.information}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.registration}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.email}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.accounts}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.boardsVisibility}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.announcement}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.accessibility}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.layout}
+        />
+        <Route
+          element={
+            <Layout>
+              <SettingPage />
+            </Layout>
+          }
+          path={routes.globalWebhooks}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.myCards}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.dueCards}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.globalSearch}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.public}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.boardArchive}
+        />
+        <Route
+          element={
+            <Layout>
+              <TasksPage />
+            </Layout>
+          }
+          path={routes.templates}
+        />
+        <Route
+          element={
+            <Layout loggedOnly={false}>
+              <NotFoundPage />
+            </Layout>
+          }
+          path={routes.notFound}
         />
         <Route
           element={
