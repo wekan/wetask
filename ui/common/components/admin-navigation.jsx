@@ -34,6 +34,30 @@ export function AdminNavigation() {
         location.pathname.startsWith('/people/')
       );
     }
+    if (path === '/admin-reports') {
+      return (
+        location.pathname === '/admin-reports' ||
+        location.pathname.startsWith('/admin-reports/')
+      );
+    }
+    if (path === '/attachments') {
+      return (
+        location.pathname === '/attachments' ||
+        location.pathname.startsWith('/attachments/')
+      );
+    }
+    if (path === '/translation') {
+      return (
+        location.pathname === '/translation' ||
+        location.pathname.startsWith('/translation/')
+      );
+    }
+    if (path === '/information') {
+      return (
+        location.pathname === '/information' ||
+        location.pathname.startsWith('/information/')
+      );
+    }
     return location.pathname === path;
   };
 

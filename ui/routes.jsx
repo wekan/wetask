@@ -21,6 +21,14 @@ export const routes = {
   accessibility: '/setting/accessibility',
   layout: '/setting/layout',
   globalWebhooks: '/setting/global-webhooks',
+  brokenCards: '/admin-reports/broken-cards',
+  filesReport: '/admin-reports/files-report',
+  rulesReport: '/admin-reports/rules-report',
+  boardsReport: '/admin-reports/boards-report',
+  cardsReport: '/admin-reports/cards-report',
+  moveAttachments: '/attachments/move-attachments',
+  translationSetting: '/translation/translation-setting',
+  informationDisplay: '/information/information-display',
   myCards: '/my-cards',
   dueCards: '/due-cards',
   globalSearch: '/global-search',
@@ -36,6 +44,10 @@ const NotFoundPage = React.lazy(
 const TasksPage = React.lazy(() => import('./pages/tasks/tasks-page'));
 const SettingPage = React.lazy(() => import('./pages/setting/setting-page'));
 const PeoplePage = React.lazy(() => import('./pages/people/people-page'));
+const AdminReportsPage = React.lazy(() => import('./pages/admin-reports/admin-reports-page'));
+const AttachmentsPage = React.lazy(() => import('./pages/attachments/attachments-page'));
+const TranslationPage = React.lazy(() => import('./pages/translation/translation-page'));
+const InformationPage = React.lazy(() => import('./pages/information/information-page'));
 import { RolesPage } from './pages/roles/roles-page';
 
 export function Routes() {
@@ -117,7 +129,7 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <AdminReportsPage />
             </Layout>
           }
           path={routes.adminReports}
@@ -125,7 +137,47 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <AdminReportsPage />
+            </Layout>
+          }
+          path={routes.brokenCards}
+        />
+        <Route
+          element={
+            <Layout>
+              <AdminReportsPage />
+            </Layout>
+          }
+          path={routes.filesReport}
+        />
+        <Route
+          element={
+            <Layout>
+              <AdminReportsPage />
+            </Layout>
+          }
+          path={routes.rulesReport}
+        />
+        <Route
+          element={
+            <Layout>
+              <AdminReportsPage />
+            </Layout>
+          }
+          path={routes.boardsReport}
+        />
+        <Route
+          element={
+            <Layout>
+              <AdminReportsPage />
+            </Layout>
+          }
+          path={routes.cardsReport}
+        />
+        <Route
+          element={
+            <Layout>
+              <AttachmentsPage />
             </Layout>
           }
           path={routes.attachments}
@@ -133,7 +185,15 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <AttachmentsPage />
+            </Layout>
+          }
+          path={routes.moveAttachments}
+        />
+        <Route
+          element={
+            <Layout>
+              <TranslationPage />
             </Layout>
           }
           path={routes.translation}
@@ -141,7 +201,15 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <TranslationPage />
+            </Layout>
+          }
+          path={routes.translationSetting}
+        />
+        <Route
+          element={
+            <Layout>
+              <InformationPage />
             </Layout>
           }
           path={routes.information}
@@ -149,10 +217,10 @@ export function Routes() {
         <Route
           element={
             <Layout>
-              <SettingPage />
+              <InformationPage />
             </Layout>
           }
-          path={routes.information}
+          path={routes.informationDisplay}
         />
         <Route
           element={

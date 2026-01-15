@@ -19,6 +19,10 @@ export function Layout({ loggedOnly = true, children }) {
   const showAdminNavigation =
     location.pathname.startsWith('/setting') ||
     location.pathname.startsWith('/people/') ||
+    location.pathname.startsWith('/admin-reports/') ||
+    location.pathname.startsWith('/attachments/') ||
+    location.pathname.startsWith('/translation/') ||
+    location.pathname.startsWith('/information/') ||
     [
       '/people',
       '/roles',
@@ -31,6 +35,10 @@ export function Layout({ loggedOnly = true, children }) {
   const isSettingsPage =
     location.pathname.startsWith('/setting') ||
     location.pathname.startsWith('/people/') ||
+    location.pathname.startsWith('/admin-reports/') ||
+    location.pathname.startsWith('/attachments/') ||
+    location.pathname.startsWith('/translation/') ||
+    location.pathname.startsWith('/information/') ||
     [
       '/people',
       '/roles',
