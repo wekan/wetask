@@ -8,11 +8,17 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import React, { Suspense } from 'react';
+import * as React from 'react';
+import { Excalidraw } from '@excalidraw/excalidraw';
 import { TaskForm } from './components/task-form';
 import { TaskItem } from './components/task-item';
 import { useTasks } from './hooks/use-tasks';
 import '/api/tasks/tasks.methods';
+
+// Ensure Excalidraw assets are loaded from local dist folder
+if (typeof window !== 'undefined') {
+  window.EXCALIDRAW_ASSET_PATH = '/excalidraw-assets/';
+}
 
 export default function TasksPage() {
   const { hideDone, setHideDone, tasks, count, pendingCount } = useTasks();
@@ -29,8 +35,23 @@ export default function TasksPage() {
           </Text>
         </Heading>
       </Stack>
+      <div style={{ marginBottom: "2rem", border: "1px solid #e2e8f0", borderRadius: "8px", overflow: "hidden", width: "100%", maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
+        {/* Excalidraw rendering */}
+        {Excalidraw ? (
+          <div style={{ position: "relative", height: "500px", width: "100%" }}>
+            <Excalidraw style={{ height: "100%", width: "100%" }} />
+          </div>
+        ) : (
+          <div style={{ color: "red", padding: "1rem" }}>
+            <b>Excalidraw drawing UI could not be rendered.</b><br />
+            <span>typeof Excalidraw: {typeof Excalidraw}</span><br />
+            <span>Check browser console for more details.</span><br />
+            <span>Possible reasons: missing CSS, asset path, import error, or incompatible React version.</span>
+          </div>
+        )}
+      </div>
       <TaskForm />
-      <Suspense fallback={<Spinner />}>
+      <React.Suspense fallback={<Spinner />}>
         <Box
           mt={8}
           py={{ base: 2 }}
@@ -68,7 +89,7 @@ export default function TasksPage() {
             <TaskItem key={task._id} task={task} />
           ))}
         </Box>
-      </Suspense>
+      </React.Suspense>
     </>
   );
 }

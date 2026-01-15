@@ -6,6 +6,8 @@ import { routes } from '../../routes';
 import { Footer } from './footer';
 import { Navbar } from './navbar';
 
+import './excalidraw-global.css';
+
 export function Layout({ loggedOnly = true, children }) {
   const userId = useUserId();
   if (loggedOnly && !userId) {

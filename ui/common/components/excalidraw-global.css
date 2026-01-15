@@ -1,0 +1,3 @@
+// This file is required for Excalidraw to display its UI correctly.
+// It should be loaded globally in your app, ideally in your main entry point or layout.
+@import url('https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.min.css');
