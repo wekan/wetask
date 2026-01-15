@@ -1,7 +1,13 @@
 {
-  "name": "simpletasks",
+  "name": "wetask",
   "author": "@fredmaiaarantes",
-  "version": "1.0.3",
+  "contributors": [
+    {
+      "name": "Lauri Ojansivu",
+      "url": "https://github.com/xet7"
+    }
+  ],
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "start": "meteor --settings private/settings.dev.json",
