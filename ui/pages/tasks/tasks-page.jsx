@@ -24,7 +24,7 @@ export default function TasksPage() {
   const { hideDone, setHideDone, tasks, count, pendingCount } = useTasks();
   return (
     <>
-      <Stack textAlign="center" spacing={{ base: 8 }} py={{ base: 10 }}>
+      <Stack textAlign="center" spacing={{ base: 8 }} py={{ base: 10 }} w="100%">
         <Heading fontWeight={600}>
           <Text
             as="span"
@@ -35,11 +35,38 @@ export default function TasksPage() {
           </Text>
         </Heading>
       </Stack>
-      <div style={{ marginBottom: "2rem", border: "1px solid #e2e8f0", borderRadius: "8px", overflow: "hidden", width: "100%", maxWidth: "900px", marginLeft: "auto", marginRight: "auto" }}>
+      <div style={{ 
+        marginBottom: "2rem", 
+        border: "1px solid #e2e8f0", 
+        borderRadius: "8px", 
+        overflow: "hidden", 
+        width: "100vw", 
+        position: "relative",
+        marginLeft: "calc(-50vw + 50%)",
+        marginRight: "calc(-50vw + 50%)"
+      }}>
         {/* Excalidraw rendering */}
         {Excalidraw ? (
-          <div style={{ position: "relative", height: "500px", width: "100%" }}>
+          <div style={{ 
+            position: "relative", 
+            height: "500px", 
+            width: "100%",
+            resize: "both",
+            overflow: "hidden",
+            minHeight: "300px",
+            minWidth: "100%"
+          }}>
             <Excalidraw style={{ height: "100%", width: "100%" }} />
+            {/* Resize handle */}
+            <div style={{
+              position: "absolute",
+              bottom: "0",
+              right: "0",
+              width: "20px",
+              height: "20px",
+              cursor: "nw-resize",
+              background: "linear-gradient(-45deg, transparent 0%, transparent 35%, #e2e8f0 35%, #e2e8f0 65%, transparent 65%)"
+            }} />
           </div>
         ) : (
           <div style={{ color: "red", padding: "1rem" }}>
@@ -61,6 +88,7 @@ export default function TasksPage() {
           borderStyle="solid"
           borderRadius="md"
           borderColor={useColorModeValue('gray.200', 'gray.700')}
+          w="100%"
         >
           <HStack mt={2}>
             <Box w="70%">
